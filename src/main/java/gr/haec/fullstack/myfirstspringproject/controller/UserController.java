@@ -44,8 +44,10 @@ public class UserController {
     }
 
     @GetMapping("/view/user/{uid}")
-    public String getProduct(@PathVariable("uid") int userId, ModelMap model){
-        User user = userService.getById(userId);
+    public String viewUser(@PathVariable("uid") int userId, ModelMap model){
+        User user = userService.findById(userId);
+        if(user == null)
+            return "error/404";
         model.addAttribute("user", user);
         return "user/view";
     }
@@ -55,5 +57,17 @@ public class UserController {
         modelAndView = new ModelAndView("user/list");
         modelAndView.addObject("users", userService.getAll());
         return modelAndView;
+    }
+
+    @GetMapping("/delete/user/{uid}")
+    public String deleteUserById(@PathVariable("uid") int userId, ModelMap model){
+        if(userService.existsById(userId)){
+            //delete user
+            userService.deleteById(userId);
+            System.out.println("Deleted user with ID: "+userId);
+            //redirect to the main index of the application
+            return "index";
+        }
+        return "error/404";
     }
 }

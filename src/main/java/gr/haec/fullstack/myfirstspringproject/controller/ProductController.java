@@ -48,8 +48,10 @@ public class ProductController {
     }
 
     @GetMapping("/view/product/{pid}")
-    public String getProduct(@PathVariable("pid") int productId, ModelMap model){
+    public String viewProduct(@PathVariable("pid") int productId, ModelMap model){
         Product product = productService.getById(productId);
+        if(product == null)
+            return "error/404";
         model.addAttribute("product", product);
         return "product/view";
     }

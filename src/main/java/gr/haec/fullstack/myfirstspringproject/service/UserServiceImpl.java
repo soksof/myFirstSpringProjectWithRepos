@@ -25,7 +25,17 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User getById(int id) {
+    public User findById(int id) {
         return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void deleteById(int id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public boolean existsById(int id) {
+        return userRepository.existsById(id);
     }
 }

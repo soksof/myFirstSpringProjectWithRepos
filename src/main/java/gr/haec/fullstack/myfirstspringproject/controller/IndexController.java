@@ -46,4 +46,8 @@ public class IndexController {
         return "test";
     }
 
+    @GetMapping("error/404")
+    public String error404(ModelMap model){
+        return "error/404";
+    }
 }
