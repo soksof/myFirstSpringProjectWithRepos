@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -47,5 +48,12 @@ public class UserController {
         User user = userService.getById(userId);
         model.addAttribute("user", user);
         return "user/view";
+    }
+
+    @GetMapping("/users")
+    public ModelAndView userList(ModelAndView modelAndView){
+        modelAndView = new ModelAndView("user/list");
+        modelAndView.addObject("users", userService.getAll());
+        return modelAndView;
     }
 }

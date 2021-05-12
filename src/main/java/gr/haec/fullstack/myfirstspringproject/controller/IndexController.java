@@ -6,7 +6,6 @@ import gr.haec.fullstack.myfirstspringproject.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,11 +15,9 @@ import java.util.List;
 @Controller
 public class IndexController {
     ProductService productService;
-    UserService userService;
 
-    public IndexController(ProductService productService, UserService userService){
+    public IndexController(ProductService productService){
         this.productService = productService;
-        this.userService = userService;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -44,12 +41,6 @@ public class IndexController {
         return modelAndView;
     }
 
-    @GetMapping("/users")
-    public ModelAndView userList(ModelAndView modelAndView){
-        modelAndView = new ModelAndView("userList");
-        modelAndView.addObject("users", userService.getAll());
-        return modelAndView;
-    }
     @GetMapping("/test")
     public String test(ModelMap model){
         return "test";
