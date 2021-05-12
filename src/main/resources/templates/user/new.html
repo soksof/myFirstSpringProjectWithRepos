@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<th:block layout:fragment="content">
+    <div id="container">
+        <!-- tab panes -->
+        <div id="prod_wrapper">
+            <div>
+                <div class="header">
+                    <h1>Add new product</h1>
+                </div>
+                <div>
+                    <form th:action="@{/user/new}" id="newUserForm" method="post" th:object="${user}">
+                        <fieldset>
+                            <label for="name">Όνομα: <span class="required">*</span></label>
+                            <input type="text" name="name" id="name" th:field="*{name}" class="text requiredField">
+                            <span class="required"  th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name ERROR</span>
+                        </fieldset>
+                        <fieldset>
+                            <label for="lastName">Επώνυμο: <span class="required">*</span></label><br>
+                            <input type="text" name="lastName" id="lastName" th:field="*{lastName}" class="text requiredField">
+                            <span class="required"  th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">lastName ERROR</span>
+                        </fieldset>
+                        <fieldset>
+                            <label>email: <span class="required">*</span></label><br>
+                            <input type="text" name="email" id="email" th:field="*{email}" class="text requiredField subject">
+                            <span class="required"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email ERROR</span>
+
+                        </fieldset>
+                        <fieldset>
+                            <label for="password">Κωδικός: <span class="required">*</span></label>
+                            <input type="password" name="password" id="password" th:field="*{password}" class="text requiredField subject">
+                            <span class="required"  th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password ERROR</span>
+                        </fieldset>
+                        <fieldset>
+                            <label for="passwordRepeat">Κωδικός: <span class="required">*</span></label>
+                            <input type="password" name="passwordRepeat" id="passwordRepeat" th:field="*{passwordRepeat}" class="text requiredField subject">
+                            <span class="required"  th:if="${#fields.hasErrors('passwordRepeat')}" th:errors="*{passwordRepeat}">passwordRepeat ERROR</span>
+                        </fieldset>
+                        <fieldset>
+                            <input name="submit" id="submit" value="Αποθήκευση" class="button white" type="submit">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!-- END tab panes -->
+            <br clear="all">
+        </div>
+        <!-- First Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Headline</h2>
+            </div>
+            <img src="img/demo/2.jpg" width="217" alt=""></div>
+        <!-- Second Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Lorem</h2>
+            </div>
+            <img src="img/demo/4.jpg" width="217" alt=""></div>
+        <!-- Third Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Ipsum</h2>
+            </div>
+            <img src="img/demo/3.jpg" width="217" alt=""></div>
+        <!-- Fourth Column -->
+        <div class="one-fourth last">
+            <div class="heading_bg">
+                <h2>Last</h2>
+            </div>
+            <img src="img/demo/1.jpg" width="217" alt=""></div>
+        <div style="clear:both; height: 40px"></div>
+    </div>
+</th:block>
+<!-- END container -->
+</html>
