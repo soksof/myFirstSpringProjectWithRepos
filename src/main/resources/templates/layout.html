@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head layout:replace="~{fragments/appHead.html}"></head>
+<body>
+<!-- TOP NAVIGATION MENU -->
+<div layout:replace="~{fragments/navigationTopMenu.html}"></div>
+<!-- END TOP NAVIGATION MENU-->
+<!-- MAIN PAGE CONTENT -->
+<th:block layout:fragment="content"/>
+<!-- END OF MAIN PAGE CONTENT -->
+<div layout:replace="~{fragments/footer.html}"></div>
+<!-- END footer -->
+<!--JS FILES -->
+<div layout:replace="~{fragments/globalScripts.html}"></div>
+<!-- END JS FILES DEFINITION -->
+</body>
+</html>

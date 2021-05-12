@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<th:block layout:fragment="content">
+    <div id="container">
+        <!-- tab panes -->
+        <div id="prod_wrapper">
+            <div>
+                <div class="header">
+                    <h1>Add new product</h1>
+                </div>
+                <div>
+                    <form th:action="@{/product/new}" id="newProductForm" method="post" th:object="${product}">
+                        <fieldset>
+                            <label for="name">Όνομα προϊόντος: <span class="required">*</span></label>
+                            <input type="text" name="name" id="name" th:field="*{name}" class="text requiredField">
+                            <span class="required"  th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name ERROR</span>
+                        </fieldset>
+                        <fieldset>
+                            <label for="type">Tύπος προϊόντος: <span class="required">*</span></label><br>
+                            <select name="type" id="type"  th:field="*{type}">
+                                <option th:each="type : ${types}" th:value="${type.getId()}" th:text="${type.getType()}">
+                                </option>
+                            </select>
+
+                        </fieldset>
+                        <fieldset>
+                            <label>Περιγραφή προϊόντος: <span class="required">*</span></label><br>
+                            <input type="text" name="description" id="description" th:field="*{description}" class="text requiredField subject">
+                            <span class="required"  th:if="${#fields.hasErrors('description')}" th:errors="*{description}">description ERROR</span>
+
+                        </fieldset>
+                        <fieldset>
+                            <label for="price">Τιμή προϊόντος: <span class="required">*</span></label>
+                            <input type="text" name="price" id="price" th:field="*{price}" class="text requiredField subject">
+                            <span class="required"  th:if="${#fields.hasErrors('price')}" th:errors="*{price}">price ERROR</span>
+
+                        </fieldset>
+                        <fieldset>
+                            <input name="submit" id="submit" value="Αποθήκευση" class="button white" type="submit">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <!-- END tab panes -->
+            <br clear="all">
+        </div>
+        <!-- First Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Headline</h2>
+            </div>
+            <img src="img/demo/2.jpg" width="217" alt=""></div>
+        <!-- Second Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Lorem</h2>
+            </div>
+            <img src="img/demo/4.jpg" width="217" alt=""></div>
+        <!-- Third Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Ipsum</h2>
+            </div>
+            <img src="img/demo/3.jpg" width="217" alt=""></div>
+        <!-- Fourth Column -->
+        <div class="one-fourth last">
+            <div class="heading_bg">
+                <h2>Last</h2>
+            </div>
+            <img src="img/demo/1.jpg" width="217" alt=""></div>
+        <div style="clear:both; height: 40px"></div>
+    </div>
+</th:block>
+<!-- END container -->
+</html>

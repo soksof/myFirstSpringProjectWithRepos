@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<th:block layout:fragment="content">
+    <div id="container">
+        <!-- tab panes -->
+        <div id="prod_wrapper">
+            <div id="panes">
+                <div th:each="product: ${products}">
+                    <img th:src="${product.getImage()}" alt="">
+                    <h5 th:text="${product.getName()}"></h5>
+                    <p th:text="${product.getDescription()}"></p>
+                    <p style="text-align:right; margin-right: 16px"><a
+                            th:href="@{/view/product/{pid}(pid=${product.getId()})}" class="button">More Info</a>
+                        <a href="#" class="button">Buy Now</a></p>
+                </div>
+            </div>
+            <!-- END tab panes -->
+            <br clear="all">
+            <!-- navigator -->
+            <div id="prod_nav">
+                <ul>
+                    <li th:each="product: ${products}">
+                        <a th:href="${'#'+product.getId()}"><img th:src="${product.getThumbnail()}" alt="">
+                            <strong th:text="${product.getName()}"></strong><span
+                                    th:text="${product.getPrice()+'€'}"></span></a></li>
+                </ul>
+            </div>
+            <!-- close navigator -->
+        </div>
+        <!-- END prod wrapper -->
+        <div style="clear:both"></div>
+        <h1 style="padding: 20px 0">This is what we do</h1>
+        <blockquote>Nulla hendrerit commodo tortor, vitae elementum magna convallis nec. Nam tempor nibh a purus aliquam
+            et adipiscing elit gravida. Ut vitae nunc a libero volutpat gravida. Nullam egestas mi sit amet dui
+            scelerisque eu laoreet nisi ultrices. Ut vitae nunc a libero volutpat gravida. Nam tempor nibh a purus
+            aliquam.
+        </blockquote>
+        <p style="text-align:right; margin-right: 16px; margin-bottom: 15px"><a href="#" class="button"
+                                                                                style="font-size: 18px">Find out
+            more</a></p>
+        <!-- First Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Headline</h2>
+            </div>
+            <img src="img/demo/2.jpg" width="217" alt=""></div>
+        <!-- Second Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Lorem</h2>
+            </div>
+            <img src="img/demo/4.jpg" width="217" alt=""></div>
+        <!-- Third Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Ipsum</h2>
+            </div>
+            <img src="img/demo/3.jpg" width="217" alt=""></div>
+        <!-- Fourth Column -->
+        <div class="one-fourth last">
+            <div class="heading_bg">
+                <h2>Last</h2>
+            </div>
+            <img src="img/demo/1.jpg" width="217" alt=""></div>
+        <div style="clear:both; height: 40px"></div>
+    </div>
+</th:block>
+</html>

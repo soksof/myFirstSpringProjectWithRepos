@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<th:block layout:fragment="content">
+    <div id="container">
+        <div id="prod_wrapper">
+            <div>
+                <div>
+                    <img th:src="${product.getImage()}" alt="">
+                    <h1 th:text="${product.getName()}"></h1>
+                    <h4 th:text="${product.getType().getType()}"></h4>
+                    <p th:text="${product.getDescription()}"></p>
+                    <p style="text-align:right; margin-right: 16px"><a href="#" class="button">Buy Now</a></p>
+                </div>
+            </div>
+            <br clear="all">
+        </div>
+        <!-- First Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Headline</h2>
+            </div>
+            <img src="img/demo/2.jpg" width="217" alt=""></div>
+        <!-- Second Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Lorem</h2>
+            </div>
+            <img src="img/demo/4.jpg" width="217" alt=""></div>
+        <!-- Third Column -->
+        <div class="one-fourth">
+            <div class="heading_bg">
+                <h2>Ipsum</h2>
+            </div>
+            <img src="img/demo/3.jpg" width="217" alt=""></div>
+        <!-- Fourth Column -->
+        <div class="one-fourth last">
+            <div class="heading_bg">
+                <h2>Last</h2>
+            </div>
+            <img src="img/demo/1.jpg" width="217" alt=""></div>
+        <div style="clear:both; height: 40px"></div>
+    </div>
+</th:block>
+<!-- END container -->
+</html>
