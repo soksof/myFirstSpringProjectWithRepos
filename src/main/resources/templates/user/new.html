@@ -7,7 +7,7 @@
         <div id="prod_wrapper">
             <div>
                 <div class="header">
-                    <h1>Add new product</h1>
+                    <h1>Προσθηκη νεου χρηστη</h1>
                 </div>
                 <div>
                     <form th:action="@{/user/new}" id="newUserForm" method="post" th:object="${user}">
@@ -25,7 +25,6 @@
                             <label>email: <span class="required">*</span></label><br>
                             <input type="text" name="email" id="email" th:field="*{email}" class="text requiredField subject">
                             <span class="required"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email ERROR</span>
-
                         </fieldset>
                         <fieldset>
                             <label for="password">Κωδικός: <span class="required">*</span></label>
@@ -33,7 +32,7 @@
                             <span class="required"  th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password ERROR</span>
                         </fieldset>
                         <fieldset>
-                            <label for="passwordRepeat">Κωδικός: <span class="required">*</span></label>
+                            <label for="passwordRepeat">Επανάληψη κωδικού: <span class="required">*</span></label>
                             <input type="password" name="passwordRepeat" id="passwordRepeat" th:field="*{passwordRepeat}" class="text requiredField subject">
                             <span class="required"  th:if="${#fields.hasErrors('passwordRepeat')}" th:errors="*{passwordRepeat}">passwordRepeat ERROR</span>
                         </fieldset>
