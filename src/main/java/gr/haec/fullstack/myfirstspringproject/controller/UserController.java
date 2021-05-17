@@ -2,14 +2,12 @@ package gr.haec.fullstack.myfirstspringproject.controller;
 
 import gr.haec.fullstack.myfirstspringproject.model.User;
 import gr.haec.fullstack.myfirstspringproject.service.UserService;
+import gr.haec.fullstack.myfirstspringproject.validator.UserValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -18,9 +16,11 @@ import java.util.List;
 @Controller
 public class UserController {
     UserService userService;
+    UserValidator userValidator;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserValidator userValidator) {
         this.userService = userService;
+        this.userValidator = userValidator;
     }
 
     @RequestMapping(value = "/user/new", method = RequestMethod.GET)
@@ -31,7 +31,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/user/new", method = RequestMethod.POST)
-    public String storeNewUser(@Valid User user, BindingResult result, ModelMap model){
+    public String storeNewUser(@ModelAttribute("user")  User user, BindingResult result, ModelMap model){
+        userValidator.validate(user, result);
+
         if(result.hasErrors()){
             for(ObjectError error: result.getAllErrors()){
                 System.out.println(error.getDefaultMessage());
