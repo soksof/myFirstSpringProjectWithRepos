@@ -1,6 +1,7 @@
 package gr.haec.fullstack.myfirstspringproject.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class User {
@@ -13,6 +14,23 @@ public class User {
     private String password;
     @Transient
     private String passwordRepeat;
+    @ManyToOne
+    private Address address;
+
+    public User(){
+
+    }
+
+    public User(UserMvc user){
+        this.id = user.getId();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.lastName = user.getLastName();
+        this.password = user.getPassword();
+        this.passwordRepeat = user.getPasswordRepeat();
+        this.address = new Address(user.getStreetName(), user.getStreetNumber(), user.getFloor(), user.getCity(),
+                user.getPoBox());
+    }
 
     public int getId() {
         return id;
@@ -60,5 +78,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

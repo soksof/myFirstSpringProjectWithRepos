@@ -1,6 +1,9 @@
 package gr.haec.fullstack.myfirstspringproject.controller;
 
+import gr.haec.fullstack.myfirstspringproject.model.Address;
 import gr.haec.fullstack.myfirstspringproject.model.User;
+import gr.haec.fullstack.myfirstspringproject.model.UserMvc;
+import gr.haec.fullstack.myfirstspringproject.service.AddressService;
 import gr.haec.fullstack.myfirstspringproject.service.UserService;
 import gr.haec.fullstack.myfirstspringproject.validator.UserValidator;
 import org.springframework.stereotype.Controller;
@@ -10,29 +13,28 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
-import java.util.List;
-
 @Controller
 public class UserController {
     UserService userService;
     UserValidator userValidator;
+    AddressService addressService;
 
-    public UserController(UserService userService, UserValidator userValidator) {
+    public UserController(UserService userService, UserValidator userValidator, AddressService addressService) {
         this.userService = userService;
         this.userValidator = userValidator;
+        this.addressService = addressService;
     }
 
     @RequestMapping(value = "/user/new", method = RequestMethod.GET)
     public String newUser(ModelMap model){
-        User newUser = new User();
+        UserMvc newUser = new UserMvc();
         model.addAttribute("user", newUser);
         return "user/new";
     }
 
     @RequestMapping(value = "/user/new", method = RequestMethod.POST)
-    public String storeNewUser(@ModelAttribute("user")  User user, BindingResult result, ModelMap model){
-        userValidator.validate(user, result);
+    public String storeNewUser(@ModelAttribute("user")  UserMvc userMvc, BindingResult result, ModelMap model){
+        userValidator.validate(userMvc, result);
 
         if(result.hasErrors()){
             for(ObjectError error: result.getAllErrors()){
@@ -40,8 +42,12 @@ public class UserController {
             }
             return "user/new";
         }
-        System.out.println("Storing user: "+user);
-        userService.save(user);
+        System.out.println("Storing user: "+userMvc);
+        User newUser = new User(userMvc);
+        Address address = newUser.getAddress();
+        addressService.save(address);
+        newUser.setAddress(address);
+        userService.save(newUser);
         return "index";
     }
 

@@ -12,10 +12,17 @@ public class Address {
     private int floor;
     private String city;
     private String poBox;
-    private String country;
-    @OneToOne(fetch = FetchType.LAZY)
-    @MapsId
-    private User user;
+
+    public Address(){
+
+    }
+    public Address(String streetName, String streetNumber, int floor, String city, String poBox) {
+        this.streetName = streetName;
+        this.streetNumber = streetNumber;
+        this.floor = floor;
+        this.city = city;
+        this.poBox = poBox;
+    }
 
     public int getId() {
         return id;
@@ -63,13 +70,5 @@ public class Address {
 
     public void setPoBox(String poBox) {
         this.poBox = poBox;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 }

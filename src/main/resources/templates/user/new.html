@@ -27,6 +27,31 @@
                             <span class="required"  th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email ERROR</span>
                         </fieldset>
                         <fieldset>
+                            <label>Οδός: <span class="required">*</span></label><br>
+                            <input type="text" name="streetName" id="streetName" th:field="*{streetName}" class="text requiredField subject">
+                            <span class="required"  th:if="${#fields.hasErrors('streetName')}" th:errors="*{streetName}">streetName ERROR</span>
+                        </fieldset>
+                        <fieldset>
+                            <label>Αριθμός: <span class="required">*</span></label><br>
+                            <input type="text" name="streetNumber" id="streetNumber" th:field="*{streetNumber}" class="text requiredField subject">
+                            <span class="required"  th:if="${#fields.hasErrors('streetNumber')}" th:errors="*{streetNumber}">streetNumber ERROR</span>
+                        </fieldset>
+                        <fieldset>
+                            <label>Όροφος: <span class="required">*</span></label><br>
+                            <input type="text" name="floor" id="floor" th:field="*{floor}" class="text requiredField subject">
+                            <span class="required"  th:if="${#fields.hasErrors('floor')}" th:errors="*{floor}">floor ERROR</span>
+                        </fieldset>
+                        <fieldset>
+                        <label>Πόλη: <span class="required">*</span></label><br>
+                        <input type="text" name="city" id="city" th:field="*{city}" class="text requiredField subject">
+                        <span class="required"  th:if="${#fields.hasErrors('city')}" th:errors="*{city}">city ERROR</span>
+                    </fieldset>
+                        <fieldset>
+                        <label>Τ.Κ.: <span class="required">*</span></label><br>
+                        <input type="text" name="poBox" id="poBox" th:field="*{poBox}" class="text requiredField subject">
+                        <span class="required"  th:if="${#fields.hasErrors('poBox')}" th:errors="*{poBox}">poBox ERROR</span>
+                    </fieldset>
+                        <fieldset>
                             <label for="password">Κωδικός: <span class="required">*</span></label>
                             <input type="password" name="password" id="password" th:field="*{password}" class="text requiredField subject">
                             <span class="required"  th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password ERROR</span>
