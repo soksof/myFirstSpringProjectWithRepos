@@ -18,4 +18,9 @@ public class ProductTypeServiceImpl implements ProductTypeService{
     public List<ProductType> findAll() {
         return productTypeRepository.findAll();
     }
+
+    @Override
+    public ProductType getProductByType(String type) {
+        return productTypeRepository.getProductTypeByType(type);
+    }
 }

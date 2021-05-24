@@ -55,4 +55,15 @@ public class ProductController {
         model.addAttribute("product", product);
         return "product/view";
     }
+
+    @GetMapping("/view/product/type/{type}")
+    public String viewAllLaptops(@PathVariable("type") String productTypeString, ModelMap model){
+        ProductType productType = productTypeService.getProductByType((productTypeString));
+        if(productType==null){
+            return "error/404";
+        }
+        List<Product> productsByType = productService.getByType(productType);
+        model.addAttribute("products", productsByType);
+        return "index";
+    }
 }
