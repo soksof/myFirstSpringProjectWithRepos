@@ -50,4 +50,9 @@ public class IndexController {
     public String error404(ModelMap model){
         return "error/404";
     }
+
+    @GetMapping("/login")
+    public String login(ModelMap model){
+        return "login";
+    }
 }

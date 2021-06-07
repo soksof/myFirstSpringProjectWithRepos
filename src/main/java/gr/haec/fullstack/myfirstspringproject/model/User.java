@@ -9,13 +9,15 @@ public class User {
     @GeneratedValue
     private int id;
     private String name;
-    private String email;
     private String lastName;
+    private String email;
     private String password;
     @Transient
     private String passwordRepeat;
     @ManyToOne
     private Address address;
+    @ManyToOne
+    private UserType type;
 
     public User(){
 
@@ -30,6 +32,14 @@ public class User {
         this.passwordRepeat = user.getPasswordRepeat();
         this.address = new Address(user.getStreetName(), user.getStreetNumber(), user.getFloor(), user.getCity(),
                 user.getPoBox());
+    }
+
+    public User(String name, String lastName, String email, String password, UserType type) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.type = type;
     }
 
     public int getId() {
@@ -86,5 +96,13 @@ public class User {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public UserType getType() {
+        return type;
+    }
+
+    public void setType(UserType type) {
+        this.type = type;
     }
 }
