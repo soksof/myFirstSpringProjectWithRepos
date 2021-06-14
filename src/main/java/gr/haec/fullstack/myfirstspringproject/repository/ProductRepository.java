@@ -12,4 +12,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     List<Product> findByNameAndPrice(String name, double price);
     List<Product> findByPriceBetween(double a, double b);
     List<Product> findByType(ProductType type);
+    List<Product> findByName(String name);
 }

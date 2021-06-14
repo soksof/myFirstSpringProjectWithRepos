@@ -19,7 +19,7 @@
                     <td th:text="${user.getLastName()}">last name</td>
                     <td th:text="${user.getEmail()}">email</td>
                     <td th:text="${user.getPassword()}">password</td>
-                    <td><a th:href="@{/delete/user/{uid}(uid=${user.getId()})}">Διαγραφή</a></td>
+                    <td><a th:href="@{/admin/delete/user/{uid}(uid=${user.getId()})}">Διαγραφή</a></td>
                 </tr>
             </table>
         </div>

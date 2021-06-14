@@ -23,7 +23,7 @@ public class ProductController {
         this.productTypeService = productTypeService;
     }
 
-    @RequestMapping(value = "/product/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/product/new", method = RequestMethod.GET)
     public String newProduct(ModelMap model){
         Product newProduct = new Product();
         List<ProductType> types = productTypeService.findAll();
@@ -32,7 +32,7 @@ public class ProductController {
         return "product/new";
     }
 
-    @RequestMapping(value = "/product/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/product/new", method = RequestMethod.POST)
     public String storeNewProduct(@Valid Product product, BindingResult result, ModelMap model){
         if(result.hasErrors()){
             for(ObjectError error: result.getAllErrors()){

@@ -27,14 +27,14 @@ public class UserController {
         this.addressService = addressService;
     }
 
-    @RequestMapping(value = "/user/new", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/user/new", method = RequestMethod.GET)
     public String newUser(ModelMap model){
         UserMvc newUser = new UserMvc();
         model.addAttribute("user", newUser);
         return "user/new";
     }
 
-    @RequestMapping(value = "/user/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/user/new", method = RequestMethod.POST)
     public String storeNewUser(@ModelAttribute("user")  UserMvc userMvc, BindingResult result, ModelMap model){
         userValidator.validate(userMvc, result);
 
@@ -62,14 +62,14 @@ public class UserController {
         return "user/view";
     }
 
-    @GetMapping("/users")
+    @GetMapping("/admin/users")
     public ModelAndView userList(ModelAndView modelAndView){
         modelAndView = new ModelAndView("user/list");
         modelAndView.addObject("users", userService.getAll());
         return modelAndView;
     }
 
-    @GetMapping("/delete/user/{uid}")
+    @GetMapping("/admin/delete/user/{uid}")
     public String deleteUserById(@PathVariable("uid") int userId, ModelMap model){
         if(userService.existsById(userId)){
             //delete user

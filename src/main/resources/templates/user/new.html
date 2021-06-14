@@ -10,7 +10,7 @@
                     <h1>Προσθηκη νεου χρηστη</h1>
                 </div>
                 <div>
-                    <form th:action="@{/user/new}" id="newUserForm" method="post" th:object="${user}">
+                    <form th:action="@{/admin/user/new}" id="newUserForm" method="post" th:object="${user}">
                         <fieldset>
                             <label for="name">Όνομα: <span class="required">*</span></label>
                             <input type="text" name="name" id="name" th:field="*{name}" class="text requiredField">

@@ -16,12 +16,12 @@ public class MyFirstSpringProjectApplication {
     }
 
 
-    @Bean
-    ApplicationRunner init(UserTypeServiceImpl userTypeService, UserServiceImpl userService){
-        return args -> {
-//            UserType userRole = userTypeService.getByType("USER");
-//            User user = new User("user1", "simple", "user1@shop.gr", "123456", userRole);
-//            userService.save(user);
-            };
-    }
+//    @Bean
+//    ApplicationRunner init(UserTypeServiceImpl userTypeService, UserServiceImpl userService){
+//        return args -> {
+////            UserType userRole = userTypeService.getByType("USER");
+////            User user = new User("user1", "simple", "user1@shop.gr", "123456", userRole);
+////            userService.save(user);
+//            };
+//    }
 }

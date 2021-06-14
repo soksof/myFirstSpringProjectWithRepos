@@ -51,6 +51,11 @@ public class IndexController {
         return "error/404";
     }
 
+    @GetMapping("error/403")
+    public String error403(ModelMap model){
+        return "error/403";
+    }
+
     @GetMapping("/login")
     public String login(ModelMap model){
         return "login";
